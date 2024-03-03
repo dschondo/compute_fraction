@@ -33,6 +33,9 @@ def parse_frac(fraction):
         num, den = str.split(frac, sep='/')
         num = (int(num) + (abs(int(whole)) * int(den)))*sign(int(whole))
         return f"{num}/{den}"
+    # If the input was a whole number, turn it into a fraction
+    elif len(str.split(fraction, sep='/')) == 1:
+        return f"{fraction}/1"
     # Else return the original fraction value
     return fraction
 
