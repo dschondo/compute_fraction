@@ -1,0 +1,12 @@
+When opening the project folder, activate the virtual environment:
+    source env/bin/activate
+
+The file fraction_run contains the code for the core task, filling in the <> with values of your choosing:
+-To run it, enter in the terminal:
+    python3 fraction_run.py <value1> <operation> <value2>
+
+The file fraction.py contains the api for the backend task
+-To start a server enter in the terminal:
+    flask --app fraction run --host 0.0.0.0 --port 8000
+-In a separate terminal, to hit the API, enter and fill in the <> with the value of your choosing:
+    http http://localhost:8000/ value1=<value> value2=<value> operation='<operator>'

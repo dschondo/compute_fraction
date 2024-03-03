@@ -1,4 +1,4 @@
-"""Censys Technical Challenge Fraction computation python file."""
+"""Censys Technical Challenge Fraction computation python file without the REST API."""
 import sys
 import click
 import math
@@ -106,18 +106,24 @@ def reduce_frac(computed_val):
 
     # format return value appropriately
     if whole == 0:
+        if num == den:
+            return f"{num}"
         return f"{num}/{den}"
     elif num == 0:
         return f"{whole}"
     else:
         return f"{whole}_{num}/{den}"
 
+def compute_fraction(value1, value2, operation):
+    # simplify input fraction values if necessary
+    frac1 = parse_frac(value1)
+    frac2 = parse_frac(value2)
+
+    computed_val = compute_value(frac1, frac2, operation)
+    simplified_frac = reduce_frac(computed_val)
+    return simplified_frac
+
 # Reads from the command line a math problem in the form (num1 operation num2)
-# Uses click library to handle command line arguments
-# @click.command()
-# @click.argument("value1", nargs=1, type=click.STRING, metavar="<First Fraction Value>")
-# @click.argument("operation", nargs=1, type=click.Choice(['+','-','/','*']), metavar="<Math Operation>")
-# @click.argument("value2", nargs=1, type=click.STRING, metavar="<Second Fraction Value>")
 def main():
     args = sys.argv[1:]
     error_check(args)
@@ -125,21 +131,11 @@ def main():
     # extract values from command line arguments
     value1, operation, value2 = args
 
-    # simplify input fraction values if necessary
-    # print(value1, value2, operation)
-    frac1 = parse_frac(value1)
-    frac2 = parse_frac(value2)
+    # call function that does all the work in computing fraction result
+    result = compute_fraction(value1, value2, operation)
 
-    computed_val = compute_value(frac1, frac2, operation)
-    simplified_frac = reduce_frac(computed_val)
-
-    print(simplified_frac)
-    return simplified_frac
+    print(result)
+    return result
 
 if __name__ == "__main__":
     main()
-    # try:
-    #     main()
-    # except Exception as e:
-    #     # Handle the exception and print the error message
-    #     print("Error:", e)
