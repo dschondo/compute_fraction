@@ -23,9 +23,9 @@ class Fraction:
         whole, fraction_parts = fraction.split('_') if '_' in fraction else (None, fraction)
         # Get the numerator and denominator if the input has fraction parts
         numerator, denominator = fraction_parts.split('/') if '/' in fraction_parts else(None, None)
-        # If the input was a whole number, assign it to the whole number temp variable
+        # If the input was a whole number, turn it into a fraction by putting the value over 1
         if '_' not in fraction and '/' not in fraction:
-            numerator = "1"
+            numerator = fraction
             denominator = "1"
         
         # Error checking on the input fraction

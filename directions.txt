@@ -1,14 +1,15 @@
-When opening the project folder, activate the virtual environment:
-    source env/bin/activate
+When opening the project folder, first run below to get the necessary packages:
+    pip install -r requirements.txt
 
 The file compute_fraction contains the code for the core task, filling in the <> with values of your choosing:
 -To run it, enter in the terminal:
     python3 compute_fraction.py <value1> <operation> <value2>
 
-The file fraction.py contains the api for the backend task
+The file fraction_api.py contains the api for the backend task
 -To start a server enter in the terminal:
-    flask --app fraction run --host 0.0.0.0 --port 8000
--In a separate terminal, to hit the API, enter and replace <*> with the value of your choosing:
+    flask --app fraction_api run --host 0.0.0.0 --port 8000
+-In a separate terminal, to hit the API, enter and replace <*> with the value of your choosing. 
+-For operation, make sure you surround the operation by '' like this: operation='+':
     http http://localhost:8000/ value1=<value> value2=<value> operation='<operator>'
 
 Note: My program treats the input 0_3/4 as 3/4 not 0

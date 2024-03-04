@@ -83,7 +83,7 @@ class TestMainFunctionality(unittest.TestCase):
     def test_division3(self):
         # Run the main script with command-line arguments and capture the output
         result = subprocess.run(['python', 'compute_fraction.py', '1_3/7', '/', '2/5'], capture_output=True, text=True)
-        print("1_3/7 / 2/5 = 25/7")
+        print("1_3/7 / 2/5 = 3_4/7")
         # Assert that the correct output is printed
         self.assertEqual(result.stdout.strip(), '3_4/7')
 

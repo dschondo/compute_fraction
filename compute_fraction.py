@@ -65,6 +65,7 @@ def main():
     # Call the Function class constructor to get Function objects
     fraction1 = fraction.Fraction(value1)
     fraction2 = fraction.Fraction(value2)
+    # print(fraction1, fraction2)
     print(compute_fraction(fraction1, fraction2, operation))
     
 
