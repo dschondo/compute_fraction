@@ -1,4 +1,4 @@
-# test_compute_fraction.py
+"""Testing suite for compute_fraction.py"""
 import unittest
 import subprocess
 
