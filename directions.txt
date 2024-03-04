@@ -8,5 +8,7 @@ The file fraction_run contains the code for the core task, filling in the <> wit
 The file fraction.py contains the api for the backend task
 -To start a server enter in the terminal:
     flask --app fraction run --host 0.0.0.0 --port 8000
--In a separate terminal, to hit the API, enter and fill in the <> with the value of your choosing:
+-In a separate terminal, to hit the API, enter and replace <*> with the value of your choosing:
     http http://localhost:8000/ value1=<value> value2=<value> operation='<operator>'
+
+Note: My program treats the input 0_3/4 as 3/4 not 0

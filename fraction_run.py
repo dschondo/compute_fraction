@@ -90,7 +90,6 @@ def compute_value(frac1, frac2, operation):
     else:
         return mult_or_div(frac1, frac2, operation)
 
-
 # Returns the simplest form of the computed fraction
 def reduce_frac(computed_val):
     num = int(str.split(computed_val, sep='/')[0])
@@ -129,6 +128,8 @@ def compute_fraction(value1, value2, operation):
 # Reads from the command line a math problem in the form (num1 operation num2)
 def main():
     args = sys.argv[1:]
+    # check that there are 3 user inputs
+    # and that there is a valid operation
     error_check(args)
 
     # extract values from command line arguments
