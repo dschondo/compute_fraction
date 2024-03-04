@@ -12,24 +12,25 @@ def error_check(args):
         raise Exception("Invalid math operator, must be in the set ['+', '-', '*', '/'].")
 
 # Modifies fraction1 and fraction2 to have common denominators
-def common_denominators(fraction1: fraction.Fraction, fraction2: fraction.Fraction):
+def common_denominator(fraction1: fraction.Fraction, fraction2: fraction.Fraction):
     new_denominator = fraction1.denominator * fraction2.denominator
     fraction1.set_numerator(fraction1.numerator * fraction2.denominator)
     fraction2.set_numerator(fraction2.numerator * fraction1.denominator)
     fraction1.set_denominator(new_denominator)
     fraction2.set_denominator(new_denominator)
+    return new_denominator
 
 # Function that adds two fractions and returns a new Fraction object
 def add_fractions(fraction1: fraction.Fraction, fraction2: fraction.Fraction):
+    denominator = common_denominator(fraction1, fraction2)
     new_numerator = fraction1.numerator + fraction2.numerator
-    denominator = fraction1.denominator
     computed_fraction = fraction.Fraction(f"{new_numerator}/{denominator}")
     return computed_fraction.reduce_fraction()
 
 # Function that adds two fractions and returns a new Fraction object
 def subtract_fractions(fraction1: fraction.Fraction, fraction2: fraction.Fraction):
+    denominator = common_denominator(fraction1, fraction2)
     new_numerator = fraction1.numerator - fraction2.numerator
-    denominator = fraction1.denominator
     computed_fraction = fraction.Fraction(f"{new_numerator}/{denominator}")
     return computed_fraction.reduce_fraction()
 
@@ -42,10 +43,8 @@ def multiply_fractions(fraction1: fraction.Fraction, fraction2: fraction.Fractio
 
 def compute_fraction(fraction1: fraction.Fraction, fraction2: fraction.Fraction, operation):
     if operation == '+':
-        common_denominators(fraction1, fraction2)
         return add_fractions(fraction1, fraction2)
     elif operation == '-':
-        common_denominators(fraction1, fraction2)
         return subtract_fractions(fraction1, fraction2)
     elif operation == '*':
         return multiply_fractions(fraction1, fraction2)

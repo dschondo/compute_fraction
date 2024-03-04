@@ -3,12 +3,19 @@ import math
 
 # Class for a fraction object
 class Fraction:
-    # Returns the sign of a number
-    @staticmethod
-    def sign(number):
-        if number >= 0:
-            return 1
-        return -1
+    # Class constructor, checks for valid input and then makes fraction object
+    def __init__(self, fraction):
+        # Initialize object variables and temporary variables
+        self.whole_number, self.numerator, self.denominator = 0, 0, 0
+        self.parse_fraction(fraction)
+    
+    # Sets the fractions numerator
+    def set_numerator(self, new_numerator):
+        self.numerator = new_numerator
+    
+    # Sets the fractions denominator
+    def set_denominator(self, new_denominator):
+        self.denominator = new_denominator
     
     # Parse the fraction input and assign object variables
     def parse_fraction(self, fraction):
@@ -33,8 +40,8 @@ class Fraction:
         # Fix the sign of the fraction to where the overall sign is reflected in the numerator
         self.numerator = abs(self.numerator) * (self.sign(self.numerator) * self.sign(self.denominator))
         self.denominator = abs(self.denominator)
-        
-        
+    
+    # Check the fraction to make sure it contains all valid components
     def fraction_error_check(self, whole, numerator, denominator):
         # Check that all numbers are valid integers or None
         if self.is_valid_input(whole) and self.is_valid_input(numerator) and self.is_valid_input(denominator):
@@ -57,20 +64,6 @@ class Fraction:
             return number.isdigit()
         return True
 
-    # Class constructor, checks for valid input and then makes fraction object
-    def __init__(self, fraction):
-        # Initialize object variables and temporary variables
-        self.whole_number, self.numerator, self.denominator = 0, 0, 0
-        self.parse_fraction(fraction)
-    
-    # Sets the fractions numerator
-    def set_numerator(self, new_numerator):
-        self.numerator = new_numerator
-    
-    # Sets the fractions denominator
-    def set_denominator(self, new_denominator):
-        self.denominator = new_denominator
-    
     # Takes a fraction and returns the fractions as it's recipricol
     def recipricate_fraction(self):
         temp_numerator = self.numerator
@@ -95,6 +88,13 @@ class Fraction:
             self.numerator = self.numerator // gcd
             self.denominator = self.denominator // gcd
         return self
+
+    # Returns the sign of a number
+    @staticmethod
+    def sign(number):
+        if number >= 0:
+            return 1
+        return -1
     
     # Manage how the fraction is printed
     def __str__(self):
